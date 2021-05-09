@@ -20,6 +20,13 @@ class Difficulty extends StatefulWidget {
 
   const Difficulty(this.players, this.rounds, this.enabledGames);
 
+  static const IconData mediumIcon =
+      IconData(0xe800, fontFamily: "DifficultyIcons", fontPackage: null);
+  static const IconData hardIcon =
+      IconData(0xe801, fontFamily: "DifficultyIcons", fontPackage: null);
+  static const IconData easyIcon =
+      IconData(0xe802, fontFamily: "DifficultyIcons", fontPackage: null);
+
   @override
   State<StatefulWidget> createState() => DifficultyState();
 }
@@ -114,200 +121,142 @@ class DifficultyState extends State<Difficulty> {
               iconTheme: IconThemeData(color: Colors.white),
             ),
             backgroundColor: Color.fromRGBO(21, 21, 21, 1),
-            body: Column(
-              children: [
-                Padding(
-                  padding: EdgeInsets.only(top: 20),
-                  child: Center(
-                    child: GestureDetector(
-                      onTap: () {
-                        selectDifficulty(Difficulty.EASY);
-                      },
-                      child: Container(
-                        height: 180,
-                        width: 350.0,
-                        decoration: BoxDecoration(boxShadow: [
-                          BoxShadow(
-                            color: Colors.black.withOpacity(0.8),
-                            blurRadius: 8,
-                            offset: Offset(2, 10), // changes position of shadow
+            body: Container(
+              constraints: BoxConstraints.expand(),
+              child: Column(
+                // crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Container(
+                      height: 180,
+                      width: 350.0,
+                      decoration: BoxDecoration(
+                          color: Colors.orange,
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.black.withOpacity(0.8),
+                              blurRadius: 8,
+                              offset:
+                                  Offset(2, 10), // changes position of shadow
+                            ),
+                          ],
+                          borderRadius: BorderRadius.all(Radius.circular(30))),
+                      child: Center(
+                        child: ListTile(
+                          onTap: () => selectDifficulty(Difficulty.EASY),
+                          leading: Icon(
+                            Difficulty.easyIcon,
+                            size: 60,
+                            color: Colors.white,
                           ),
-                        ], borderRadius: BorderRadius.all(Radius.circular(30))),
-                        child: Container(
-                          child: Row(
-                            children: [
-                              Padding(
-                                padding: EdgeInsets.only(right: 10, left: 10),
-                                child: Icon(
-                                  Icons.local_drink_rounded,
-                                  size: 80,
-                                  color: Colors.white,
-                                ),
-                              ),
-                              Expanded(
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      "Leicht",
-                                      style: GoogleFonts.nunito(
-                                        color: Colors.white,
-                                        fontSize: 30,
-                                        fontWeight: FontWeight.w800,
-                                      ),
-                                    ).tr(),
-                                    Text(
-                                      "1-2 Schlücke | 5 shots",
-                                      style: GoogleFonts.nunito(
-                                          color: Colors.white,
-                                          fontSize: 15,
-                                          fontWeight: FontWeight.w600),
-                                    ).tr(),
-                                  ],
-                                ),
-                              ),
-                            ],
-                          ),
-                          decoration: BoxDecoration(
-                            color: Colors.orange,
-                            borderRadius: BorderRadius.all(Radius.circular(30)),
-                          ),
+                          title: Text(
+                            "Leicht",
+                            style: GoogleFonts.nunito(
+                              color: Colors.white,
+                              fontSize: 30,
+                              fontWeight: FontWeight.w800,
+                            ),
+                          ).tr(),
+                          subtitle: Text(
+                            "1-2 Schlücke | 5 shots",
+                            style: GoogleFonts.nunito(
+                                color: Colors.white,
+                                fontSize: 15,
+                                fontWeight: FontWeight.w600),
+                          ).tr(),
                         ),
                       ),
                     ),
                   ),
-                ),
-                Padding(
-                  padding: EdgeInsets.only(top: 20),
-                  child: Center(
-                    child: GestureDetector(
-                      onTap: () {
-                        selectDifficulty(Difficulty.MIDDLE);
-                      },
-                      child: Container(
-                        height: 180,
-                        width: 350.0,
-                        decoration: BoxDecoration(
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.black.withOpacity(0.8),
-                                blurRadius: 8,
-                                offset:
-                                    Offset(2, 10), // changes position of shadow
-                              ),
-                            ],
-                            color: Colors.grey,
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(30))),
-                        child: Container(
-                          child: Row(
-                            children: [
-                              Padding(
-                                padding: EdgeInsets.only(right: 10, left: 10),
-                                child: Icon(
-                                  Icons.local_drink_rounded,
-                                  size: 80,
-                                  color: Colors.white,
-                                ),
-                              ),
-                              Expanded(
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      "Normal",
-                                      style: GoogleFonts.nunito(
-                                        color: Colors.white,
-                                        fontSize: 30,
-                                        fontWeight: FontWeight.w800,
-                                      ),
-                                    ).tr(),
-                                    Text(
-                                      "1-2 Schlücke | 5 shots",
-                                      style: GoogleFonts.nunito(
-                                          color: Colors.white,
-                                          fontSize: 15,
-                                          fontWeight: FontWeight.w600),
-                                    ).tr(),
-                                  ],
-                                ),
-                              ),
-                            ],
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Container(
+                      height: 180,
+                      width: 350.0,
+                      decoration: BoxDecoration(
+                          color: Colors.deepOrange,
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.black.withOpacity(0.8),
+                              blurRadius: 8,
+                              offset:
+                                  Offset(2, 10), // changes position of shadow
+                            ),
+                          ],
+                          borderRadius: BorderRadius.all(Radius.circular(30))),
+                      child: Center(
+                        child: ListTile(
+                          onTap: () => selectDifficulty(Difficulty.EASY),
+                          leading: Icon(
+                            Difficulty.mediumIcon,
+                            size: 60,
+                            color: Colors.white,
                           ),
-                          decoration: BoxDecoration(
-                            color: Colors.deepOrange,
-                            borderRadius: BorderRadius.all(Radius.circular(30)),
-                          ),
+                          title: Text(
+                            "Normal",
+                            style: GoogleFonts.nunito(
+                              color: Colors.white,
+                              fontSize: 30,
+                              fontWeight: FontWeight.w800,
+                            ),
+                          ).tr(),
+                          subtitle: Text(
+                            "1-2 Schlücke | 5 shots",
+                            style: GoogleFonts.nunito(
+                                color: Colors.white,
+                                fontSize: 15,
+                                fontWeight: FontWeight.w600),
+                          ).tr(),
                         ),
                       ),
                     ),
                   ),
-                ),
-                Padding(
-                  padding: EdgeInsets.only(top: 20),
-                  child: Center(
-                    child: GestureDetector(
-                      onTap: () {
-                        selectDifficulty(Difficulty.HARD);
-                      },
-                      child: Container(
-                        height: 180,
-                        width: 350.0,
-                        decoration: BoxDecoration(boxShadow: [
-                          BoxShadow(
-                            color: Colors.black.withOpacity(0.8),
-                            blurRadius: 8,
-                            offset: Offset(2, 10), // changes position of shadow
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Container(
+                      height: 180,
+                      width: 350.0,
+                      decoration: BoxDecoration(
+                          color: Colors.red,
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.black.withOpacity(0.8),
+                              blurRadius: 8,
+                              offset:
+                                  Offset(2, 10), // changes position of shadow
+                            ),
+                          ],
+                          borderRadius: BorderRadius.all(Radius.circular(30))),
+                      child: Center(
+                        child: ListTile(
+                          onTap: () => selectDifficulty(Difficulty.HARD),
+                          leading: Icon(
+                            Difficulty.hardIcon,
+                            size: 60,
+                            color: Colors.white,
                           ),
-                        ], borderRadius: BorderRadius.all(Radius.circular(30))),
-                        child: Container(
-                          child: Row(
-                            children: [
-                              Padding(
-                                padding: EdgeInsets.only(right: 10, left: 10),
-                                child: Icon(
-                                  Icons.local_drink_rounded,
-                                  size: 80,
-                                  color: Colors.white,
-                                ),
-                              ),
-                              Expanded(
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      "Absturz",
-                                      style: GoogleFonts.nunito(
-                                        color: Colors.white,
-                                        fontSize: 30,
-                                        fontWeight: FontWeight.w800,
-                                      ),
-                                    ).tr(),
-                                    Text(
-                                      "1-2 Schlücke | 5 shots",
-                                      style: GoogleFonts.nunito(
-                                          color: Colors.white,
-                                          fontSize: 15,
-                                          fontWeight: FontWeight.w600),
-                                    ).tr(),
-                                  ],
-                                ),
-                              ),
-                            ],
-                          ),
-                          decoration: BoxDecoration(
-                            color: Colors.red,
-                            borderRadius: BorderRadius.all(Radius.circular(30)),
-                          ),
+                          title: Text(
+                            "Absturz",
+                            style: GoogleFonts.nunito(
+                              color: Colors.white,
+                              fontSize: 30,
+                              fontWeight: FontWeight.w800,
+                            ),
+                          ).tr(),
+                          subtitle: Text(
+                            "1-2 Schlücke | 5 shots",
+                            style: GoogleFonts.nunito(
+                                color: Colors.white,
+                                fontSize: 15,
+                                fontWeight: FontWeight.w600),
+                          ).tr(),
                         ),
                       ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
             floatingActionButton: FloatingActionButton(
               onPressed: () => addCustomDifficulty(context),

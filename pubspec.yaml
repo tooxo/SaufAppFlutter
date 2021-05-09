@@ -88,6 +88,9 @@ flutter:
     - family: Icons
       fonts:
         - asset: assets/fonts/Icons.ttf
+    - family: DifficultyIcons
+      fonts:
+        - asset: assets/fonts/DifficultyIcons.ttf
 
 flutter_icons:
   android: "launcher_icon"
